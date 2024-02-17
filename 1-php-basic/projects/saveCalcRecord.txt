@@ -1,0 +1,3 @@
+
+width (120) * breadth (100) = area (12000)
+width (20) * breadth (300) = area (6000)
