@@ -44,15 +44,17 @@
             if ($record === "\n")   continue;
         ?>
 
+            <p class=" font-mono text-gray-700 bg-white rounded-md mb-3 p-5">
+                <!-- <?= "hehe" ?> -->
+                <?= $record; ?>
+            </p>
+
         <?php
         endwhile;
         // fclose($fileStream);
         ?>
 
-        <p class=" font-mono text-gray-700 bg-white rounded-md mb-3 p-5">
-            <!-- <?= "hehe" ?> -->
-            <?= $record; ?>
-        </p>
+
 
         <a href="./index.php" class=" mt-4 w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
             Calculate again?
