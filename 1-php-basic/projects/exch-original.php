@@ -25,12 +25,16 @@
 
     ?>
 
+    <!-- IF YOU USE form liek THIS, YOU NEED TO ADD form="form_id" to EVERY SINGLE thing
+    YOU WANT TO CARRY OVER POST -->
+
     <form method="post" id="exchangeForm">
 
     </form>
     <div class=" mt-3">
         <label for="amount" class="block text-md font-medium mb-2 dark:text-white">Enter the currency amount.</label>
         <input type="number" id="amount" form="exchangeForm" name="amount" required class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600" placeholder="">
+        <!-- notice form="form_id" -->
     </div>
 
     <div class="flex gap-3 w-full">
@@ -39,6 +43,8 @@
                 From
             </label>
             <select name="sourceCurrency" id="sourceCurrency" form="exchangeForm" class=" w-full h-10 bg-gray-200 rounded-md">
+                <!-- notice form="form_id" -->
+
                 <option value="MMK" class=" text-center">MMK</option>
                 <?php
                 foreach ($exchangeRates as $name => $value) :
@@ -54,6 +60,8 @@
                 To
             </label>
             <select name="targetCurrency" id="targetCurrency" form="exchangeForm" class=" w-full h-10 bg-gray-200 rounded-md">
+                <!-- notice form="form_id" -->
+
                 <option value="MMK" class=" text-center">MMK</option>
                 <?php
                 foreach ($exchangeRates as $name => $value) :
