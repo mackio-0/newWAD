@@ -20,24 +20,36 @@ if (isset($_POST["convert"])) :
 
     if ($from_currency_name === "MMK" || $to_currency_name === "MMK") {
         if ($from_currency_name === "MMK") {
-            $result = $amount / $to_currency_rate;
+            $result = round($amount / $to_currency_rate, 2);
         } else if ($to_currency_name === "MMK") {
-            $result = $amount * $from_currency_rate;
+            $result = round($amount * $from_currency_rate, 2);
         }
     } else {
         $mmk = $amount * $from_currency_rate;
-        $result = $mmk / $to_currency_rate;
+        $result = round($mmk / $to_currency_rate, 2);
     }
+
+    $fileName = "saveExchRecord.txt";
+    if (!file_exists($fileName)) {
+        touch($fileName);
+    }
+
+    date_default_timezone_set('Asia/Yangon');
+    $currentDate = date("d/m/Y, g:i a");
+
+    $stream = fopen($fileName, "a");
+    fwrite($stream, "\n$amount $from_currency_name equal to $result $to_currency_name.-$currentDate");
+    fclose($stream);
 
 
 ?>
 
-    <div class=" bg-white p-3 rounded-lg">
+    <div class=" bg-white p-3 rounded-lg my-3">
         <p class=" text-md mb-0 text-gray-600">
             <?= $amount ?> <?= $from_currency_name ?> is equal to
         </p>
         <p class=" text-3xl font-semibold">
-            <?= round($result, 2) ?> <?= $to_currency_name ?>
+            <?= $result ?> <?= $to_currency_name ?>
         </p>
     </div>
 

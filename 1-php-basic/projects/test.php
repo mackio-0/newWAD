@@ -21,11 +21,11 @@
 // copy("myname.txt", "hehe.txt");
 // rename("hehe.txt", "myname_copy.txt");
 
-$fileName = "myname.txt";
+// $fileName = "myname.txt";
 
-if (file_exists($fileName)) {
-    touch($fileName);
-}
+// if (file_exists($fileName)) {
+//     touch($fileName);
+// }
 
 // w mode will overwrite the exisiting file contents
 
@@ -54,7 +54,7 @@ if (file_exists($fileName)) {
 // fwrite($fileStream, " Ko");
 // fclose($fileStream);
 
-$fileStream = fopen($fileName, "r");
+// $fileStream = fopen($fileName, "r");
 
 // print(fread($fileStream, 1024));
 
@@ -65,19 +65,30 @@ $fileStream = fopen($fileName, "r");
 // echo fgetc($fileStream);    // \n
 // echo fgetc($fileStream);    // K
 
-echo fgets($fileStream);    // Minn
-echo fgets($fileStream);    // Khant
-echo fgets($fileStream);    // Ko
-echo fgets($fileStream);    // Pr
-echo fgets($fileStream);    // byr eof(no \n)
+// echo fgets($fileStream);    // Minn
+// echo fgets($fileStream);    // Khant
+// echo fgets($fileStream);    // Ko
+// echo fgets($fileStream);    // Pr
+// echo fgets($fileStream);    // byr eof(no \n)
 
-echo "\nfeof : ";
+// echo "\nfeof : ";
 
-var_dump(feof($fileStream));
+// var_dump(feof($fileStream));
 
 // while (!feof($fileStream)) {
 //     // echo fgetc($fileStream);
 //     echo fgets($fileStream);
 // }
 
-fclose($fileStream);
+// fclose($fileStream);
+
+date_default_timezone_set('Asia/Yangon');
+
+$date = date("d/m/Y, g:i a");
+$time = date("g:i a");
+echo $date;
+echo "\n";
+echo $time;
+
+// $strArr = explode("-", "10 USD equal to 15.02 JPY.-2024/02/19-12:37 am");
+// print_r($strArr);

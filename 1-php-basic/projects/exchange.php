@@ -111,9 +111,15 @@
                 <!-- End Select -->
             </div>
         </div>
-        <button type="submit" name="convert" form="exc" class="py-3 px-4 w-full mt-5 inline-flex items-center justify-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
-            Convert
-        </button>
+        <div class=" flex gap-5 mt-5">
+            <a href="./exchRecordList.php" type="button" class=" flex-grow justify-center py-3 px-4 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-blue-600 hover:bg-blue-100 hover:text-blue-800 disabled:opacity-50 disabled:pointer-events-none dark:text-blue-500 dark:hover:bg-blue-800/30 dark:hover:text-blue-400 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
+                Records
+            </a>
+            <button type="submit" name="convert" form="exc" class="flex-grow px-4 py-3 inline-flex items-center justify-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
+                Convert
+            </button>
+        </div>
+
 
     </section>
 </section>
