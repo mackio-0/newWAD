@@ -23,7 +23,7 @@ system("clear");
 
 // echo array_key_exists("gf", $assoc);
 // echo "\n";
- 
+
 
 // print_r(array_keys($assoc));
 // print_r(array_values($assoc));
@@ -197,20 +197,20 @@ system("clear");
 
 // array map, filter, reduce
 
-// $nums = [5, 13, 10, 2, 7];
+$nums = [5, 13, 10, 2, 7];
 
 // $twoxNums = array_map(fn($el) => $el * 2 ,$nums);
 // $twoxNums = array_map(function($el) {
 //     return $el * 2;
 // }, $nums);
 
-// $filteredArr = array_filter($nums, fn($el) => $el <= 10);
+$filteredArr = array_filter($nums, fn($el) => $el <= 10);
 // $reducedArr = array_reduce($nums, fn($pv, $cv) => $pv + $cv, 0);
 
 // print_r($nums);
 // print_r($twoxNums);
 // print("Filtered - ");
-// print_r($filteredArr);
+print_r($filteredArr);
 // print("Reduced - ");
 // print_r($reducedArr);
 // print("\n");
@@ -247,11 +247,11 @@ system("clear");
 // print_r($GLOBALS);
 // print_r($_SERVER);
 
-$GLOBALS["MY_NAME"] = "Minn Khant Ko";
-// print_r($GLOBALS);
+// $GLOBALS["MY_NAME"] = "Minn Khant Ko";
+// // print_r($GLOBALS);
 
-function run() {
-    return "My name is " . $GLOBALS["MY_NAME"] . ".";
-}
+// function run() {
+//     return "My name is " . $GLOBALS["MY_NAME"] . ".";
+// }
 
-echo run();
+// echo run();
