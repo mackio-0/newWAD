@@ -82,13 +82,27 @@
 
 // fclose($fileStream);
 
-date_default_timezone_set('Asia/Yangon');
+// date_default_timezone_set('Asia/Yangon');
 
-$date = date("d/m/Y, g:i a");
-$time = date("g:i a");
-echo $date;
-echo "\n";
-echo $time;
+// $date = date("d/m/Y, g:i a");
+// $time = date("g:i a");
+// echo $date;
+// echo "\n";
+// echo $time;
 
+// echo uniqid();
 // $strArr = explode("-", "10 USD equal to 15.02 JPY.-2024/02/19-12:37 am");
 // print_r($strArr);
+
+$photos = [".", "..", "aksdfja", "123", "hehe"];
+
+$filtered = array_filter($photos, fn ($el) => $el != "." && $el != "..");
+print_r($filtered);
+
+
+// function odd($var)
+// {
+//     return ($var & 1);
+// }
+
+// var_dump(odd(2));
