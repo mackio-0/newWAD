@@ -24,7 +24,18 @@
     ?>
     <div class=" columns-3 gap-3 mt-5">
         <?php foreach ($photos as $photo) : ?>
-            <img class=" mb-2 rounded-lg " src="photos/<?= $photo ?>" alt="">
+            <!-- <div class=" inline-block relative group mb-3">
+                <img class=" rounded-lg " src="photos/<?= $photo ?>" alt="">
+                <a href="./gallery-delete.php" class="py-2 px-3 absolute bottom-0 right-0 hidden pointer-events-none group-hover:inline-flex group-hover:pointer-events-auto items-center gap-x-2 text-sm font-semibold rounded-lg border border-red-500 text-red-500 hover:border-red-400 hover:text-red-400 disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
+                    Button
+                </a>
+            </div> -->
+            <div class="relative inline-block group mb-3">
+                <img class=" rounded-lg " src="photos/<?= $photo ?>" alt="">
+                <a onclick="return confirm('Are you sure to delete this photo?')" href="./gallery-delete.php?file_name=<?= $photo ?>" class="py-2 px-3 absolute right-1 bottom-1 hidden pointer-events-none group-hover:inline-flex group-hover:pointer-events-auto items-center gap-x-2 text-sm font-semibold rounded-lg border border-red-500 text-red-500 hover:border-red-400 hover:text-red-400 disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
+                    Button
+                </a>
+            </div>
         <?php endforeach; ?>
     </div>
 </section>
