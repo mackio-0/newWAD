@@ -6,8 +6,8 @@ system("clear");
 // $arr = array("a", "b", "c", "d");
 // $x = ["x", "y", "z"];
 
-// aswsoc array, key => value
 
+// assoc array, key => value
 // $assoc = array(
 //     "myName" => "MKK",
 //     "myAge" => 25,

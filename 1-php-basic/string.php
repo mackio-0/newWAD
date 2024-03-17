@@ -18,7 +18,7 @@ $text2 = "xxxabcdxx";
 // echo "My name is $name";
 // echo 'My name is $name';
 
-echo substr($name, 5, 5);
+echo substr($name, 5, 7);
 echo "\n";
 // echo substr($sanKyi, 4, 2);
 // echo mb_substr($sanKyi, 4, 2);

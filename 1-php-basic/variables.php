@@ -1,10 +1,13 @@
 <?php
 
-// define("MYNAME", "MKK");
-// const X = 100;
+define("MYNAME", "MKK");
+const NUM = 100;
 
-// echo MYNAME;
-// echo X;
+echo MYNAME;
+echo NUM;
+
+echo "\n";
+
 
 echo PHP_OS;
 echo "\n";

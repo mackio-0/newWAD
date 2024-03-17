@@ -31,3 +31,23 @@ function sum(array $arr):int {
 
 // print(sum(1,2,3));
 // print(sum([1, 2, 3, 4]));
+
+
+// gettype() settype()
+
+$x = 3.12;
+$y = "123jd";
+$z = true;
+
+settype($x, "float");
+settype($y, "integer");
+settype($z, "string");
+
+echo $x;
+echo "\n";
+echo $y;
+echo "\n";
+echo $z;
+echo "\n";
+
+var_dump( 5 === "5");
