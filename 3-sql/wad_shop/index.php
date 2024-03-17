@@ -1,57 +1,26 @@
-<?php
+<?php require("./template/header.php"); ?>
+<?php include("./template/sidebar.php"); ?>
 
-$conn = mysqli_connect("localhost", "mkk", "asdffdsa", "wad_shop");
+<section class=" bg-gray-100 p-10 rounded-lg">
 
-if (!$conn) {
-    die("Connection Failed " . mysqli_connect_error());
-}
+    <ol class="flex items-center whitespace-nowrap " aria-label="Breadcrumb">
+        <li class="inline-flex items-center">
+            <a class="flex items-center text-sm text-gray-500 hover:text-blue-600 focus:outline-none focus:text-blue-600 dark:focus:text-blue-500" href="#">
+                Home
+            </a>
+            <svg class="flex-shrink-0 mx-2 overflow-visible h-4 w-4 text-gray-400 dark:text-neutral-600 dark:text-neutral-600" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="m9 18 6-6-6-6" />
+            </svg>
+        </li>
+    </ol>
 
-?>
+    <hr class="  border-gray-300 my-4">
 
-<!DOCTYPE html>
-<html lang="en">
+    <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque impedit accusamus ex veniam quos, nemo delectus veritatis corporis expedita alias, ipsum sint blanditiis sit nostrum dicta eius recusandae suscipit magni.
+    </p>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SQL & PHP shop</title>
-</head>
 
-<body>
-    <form action="save.php" method="post">
-        <input type="text" name="name" required>
-        <input type="text" name="price" required>
-        <input type="number" name="stock" required>
-        <button>Add</button>
-    </form>
+</section>
 
-    <br>
-
-    <table>
-        <thead>
-            <th>#</th>
-            <th>Name</th>
-            <th>Price</th>
-            <th>Stock</th>
-            <th>Created at</th>
-            <th>Action</th>
-        </thead>
-        <?php
-        $sql = "SELECT * FROM products";
-        $query = mysqli_query($conn, $sql);
-
-        while ($row = mysqli_fetch_assoc($query)) :
-        ?>
-            <tr>
-                <td><?= $row['id'] ?></td>
-                <td><?= $row['name'] ?></td>
-                <td><?= $row['price'] ?></td>
-                <td><?= $row['stock'] ?></td>
-                <td><?= $row['created_at'] ?></td>
-                <td><a href="./edit.php?row_id=<?= $row['id'] ?>">Update</a> | <a onclick="return confirm('Are you sure to delete <?= $row['name'] ?>')" href="./delete.php?row_id=<?= $row['id'] ?>">Delete</a> </td>
-            </tr>
-        <?php endwhile ?>
-    </table>
-</body>
-
-</html>
+<?php include("./template/footer.php");
