@@ -150,11 +150,11 @@ system("clear");
 // echo in_array("z", $arr);
 // echo "\n";
 
-// // array destructuring
-// $info = ["coffee", "milk", "tea"];
-// list($x, $y) = $info;
-// echo $x;
-// echo "\n";
+// array destructuring
+$info = ["coffee", "milk", "tea"];
+list($x, $y) = $info;
+echo $x;
+echo "\n";
 
 // // generate a list of elements inside an array
 // print_r(range(0, 100, 10));
