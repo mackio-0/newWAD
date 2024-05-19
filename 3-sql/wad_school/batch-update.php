@@ -2,16 +2,24 @@
 
 require_once "./db_connect.php";
 
-$id = $_POST["row_id"];
-$name = $_POST["name"];
-$price = $_POST["price"];
-$stock = $_POST["stock"];
+// print_r($_POST);
+// die();
 
-$sql = "UPDATE products SET name = '$name', price = $price, stock = $stock WHERE id = $id";
+$id = $_POST["batch_id"];
+$name = $_POST["name"];
+$course_id = $_POST["course_id"];
+$start_date = $_POST["start_date"];
+$start_time = $_POST["start_time"];
+$end_time = $_POST["end_time"];
+$student_limit = $_POST["student_limit"];
+$is_register_open = isset($_POST["is_register_open"]) ? $_POST["is_register_open"] : 0;
+
+$sql = "UPDATE batches SET name = '$name', course_id = $course_id, start_date = '$start_date', start_time = '$start_time', end_time = '$end_time', student_limit = $student_limit, is_register_open = $is_register_open WHERE id = $id";
 // echo $sql;  // *** always check SQL UPDATE statement before executing query
+// die();
 
 $query = mysqli_query($conn, $sql);
 
 if ($query) {
-    header("Location:product-create-list.php");
+    header("Location:batch-list.php");
 }

@@ -9,11 +9,11 @@ require_once "./db_connect.php";
 $id = $_GET['row_id'];
 
 // SQL statement
-$sql = "DELETE FROM batches WHERE id = $id";
+$sql = "DELETE FROM products WHERE id = $id";
 
 // SQL query
 $query = mysqli_query($conn, $sql);
 
 if ($query) {
-    header("Location:batch-list.php");
+    header("Location:product-create-list.php");
 }
