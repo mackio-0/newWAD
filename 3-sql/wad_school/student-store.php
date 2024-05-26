@@ -1,11 +1,16 @@
 <?php
+// ini_set('display_errors', 1);
+// error_reporting(E_ALL);
+// print_r($_POST);
+// echo phpinfo();
+// die();
 
 require_once "./db_connect.php";
 
+// echo "<pre>";
 // print_r($_POST);
 // die();
 
-$row_id = $_POST["batch_id"];
 $name = $_POST["name"];
 $course_id = $_POST["course_id"];
 $start_date = $_POST["start_date"];
@@ -14,11 +19,16 @@ $end_time = $_POST["end_time"];
 $student_limit = $_POST["student_limit"];
 $is_register_open = isset($_POST["is_register_open"]) ? $_POST["is_register_open"] : 0;
 
-$sql = "UPDATE batches SET name = '$name', course_id = $course_id, start_date = '$start_date', start_time = '$start_time', end_time = '$end_time', student_limit = $student_limit, is_register_open = $is_register_open WHERE id = $row_id";
-// echo $sql;  // *** always check SQL UPDATE statement before executing query
+// SQL 
+
+$sql = "INSERT INTO batches (name, course_id, start_date, start_time, end_time, is_register_open, student_limit) VALUES ('$name', $course_id, '$start_date', '$start_time', '$end_time', $is_register_open, $student_limit)";
+// echo $sql;
+
 // die();
 
 $query = mysqli_query($conn, $sql);
+
+// var_dump($query);
 
 if ($query) {
     header("Location:batch-list.php");

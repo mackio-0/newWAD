@@ -5,9 +5,9 @@
 
 <?php
 
-$batch_id = $_GET['row_id'];
+$id = $_GET['row_id'];
 
-$sql = "SELECT * FROM batches WHERE id = $batch_id";
+$sql = "SELECT * FROM batches WHERE id = $id";
 $query = mysqli_query($conn, $sql);
 $row = mysqli_fetch_assoc($query);
 
@@ -35,7 +35,7 @@ $row = mysqli_fetch_assoc($query);
     <form action="batch-update.php" method="post" class=" mb-8">
         <div class="flex flex-col gap-3 w-1/2">
             <div class="">
-                <input type="hidden" name="batch_id" value="<?= $batch_id ?>">
+                <input type="hidden" name="batch_id" value="<?= $id ?>">
 
                 <label for="batch_name" class="block text-sm font-medium mb-2 dark:text-white">Batch Name</label>
                 <input required type="text" id="batch_name" value="<?= $row["name"] ?>" name="name" class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600" placeholder="Batch Name">

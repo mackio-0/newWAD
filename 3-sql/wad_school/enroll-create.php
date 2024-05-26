@@ -3,16 +3,6 @@
 <?php require("./template/header.php"); ?>
 <?php include("./template/sidebar.php"); ?>
 
-<?php
-
-$batch_id = $_GET['row_id'];
-
-$sql = "SELECT * FROM batches WHERE id = $batch_id";
-$query = mysqli_query($conn, $sql);
-$row = mysqli_fetch_assoc($query);
-
-?>
-
 <section class=" bg-gray-100 p-10 rounded-lg">
 
     <ol class="flex items-center whitespace-nowrap " aria-label="Breadcrumb">
@@ -26,74 +16,66 @@ $row = mysqli_fetch_assoc($query);
         </li>
 
         <li class="inline-flex items-center text-sm font-semibold text-gray-800 truncate dark:text-gray-200" aria-current="page">
-            Edit the "<?= $row["name"] ?>" Batch
+            Create A New Batch
         </li>
     </ol>
 
     <hr class="  border-gray-300 my-4">
 
-    <form action="batch-update.php" method="post" class=" mb-8">
+    <form action="batch-store.php" method="post" class=" mb-8">
         <div class="flex flex-col gap-3 w-1/2">
             <div class="">
-                <input type="hidden" name="batch_id" value="<?= $batch_id ?>">
-
                 <label for="batch_name" class="block text-sm font-medium mb-2 dark:text-white">Batch Name</label>
-                <input required type="text" id="batch_name" value="<?= $row["name"] ?>" name="name" class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600" placeholder="Batch Name">
+                <input required type="text" id="batch_name" name="name" class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600" placeholder="Batch Name">
             </div>
 
             <div class="">
                 <label for="course_name" class="block text-sm font-medium mb-2 dark:text-white">Course Name</label>
                 <select name="course_id" id="course_name" class="py-3 px-4 pe-9 block w-full bg-white border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600">
-                    <option>Select a course</option>
+                    <option selected="">Select a course</option>
                     <?php
 
                     $sql = "SELECT * FROM courses";
                     $query = mysqli_query($conn, $sql);
 
-                    while ($course = mysqli_fetch_assoc($query)) :
+                    while ($row = mysqli_fetch_assoc($query)) :
                     ?>
-                        <option 
-                        <?= $row["course_id"] == $course["id"] ? "selected" : "" ?> 
-                        value="<?= $course["id"] ?>" 
-                        >
-                            <?= $course["title"] ?>
-                        </option>
+                        <option value="<?= $row["id"] ?>"><?= $row["title"] ?></option>
                     <?php endwhile; ?>
                 </select>
             </div>
 
             <div class="">
                 <label for="start_date" class="block text-sm font-medium mb-2 dark:text-white">Start date</label>
-                <input required value="<?= $row["start_date"] ?>" type="date" id="start_date" name="start_date" class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600" placeholder="Start Date">
+                <input required type="date" id="start_date" name="start_date" class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600" placeholder="Start Date">
             </div>
 
             <div class="flex gap-3">
                 <div class="w-full">
                     <label for="start_time" class="block text-sm font-medium mb-2 dark:text-white">Start Time</label>
-                    <input required value="<?= $row["start_time"] ?>" type="time" id="start_time" name="start_time" class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600" placeholder="Start Time">
+                    <input required type="time" id="start_time" name="start_time" class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600" placeholder="Start Time">
                 </div>
 
                 <div class="w-full">
                     <label for="end_time" class="block text-sm font-medium mb-2 dark:text-white">End Time</label>
-                    <input required value="<?= $row["end_time"] ?>" type="time" id="end_time" name="end_time" class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600" placeholder="End Time">
+                    <input required type="time" id="end_time" name="end_time" class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600" placeholder="End Time">
                 </div>
             </div>
 
             <div class="">
                 <label for="student_limit" class="block text-sm font-medium mb-2 dark:text-white">Student Limit</label>
-                <input required value="<?= $row["student_limit"] ?>" type="number" id="student_limit" name="student_limit" class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600" placeholder="Student Limit">
+                <input required type="number" id="student_limit" name="student_limit" class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600" placeholder="Student Limit">
             </div>
 
             <div class="py-3">
                 <div class="flex">
-                    <input <?= $row["is_register_open"] == 1 ? "checked" : "" ?> 
-                    type="checkbox" name="is_register_open" class="shrink-0 mt-0.5 border-gray-200 rounded text-blue-600 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800" id="hs-checked-checkbox" value="1">
+                    <input type="checkbox" name="is_register_open" class="shrink-0 mt-0.5 border-gray-200 rounded text-blue-600 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800" id="hs-checked-checkbox" value="1" checked="">
                     <label for="hs-checked-checkbox" class="text-sm text-black ms-3 dark:text-neutral-400">Register Open</label>
                 </div>
             </div>
 
             <button type="submit" class="py-3 px-4 inline-flex items-center justify-center gap-x-2 font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none">
-                Update the Batch
+                Add Batch
             </button>
         </div>
     </form>

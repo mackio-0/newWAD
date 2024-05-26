@@ -5,7 +5,7 @@ require_once "./db_connect.php";
 // print_r($_POST);
 // die();
 
-$row_id = $_POST["batch_id"];
+$id = $_POST["batch_id"];
 $name = $_POST["name"];
 $course_id = $_POST["course_id"];
 $start_date = $_POST["start_date"];
@@ -14,7 +14,7 @@ $end_time = $_POST["end_time"];
 $student_limit = $_POST["student_limit"];
 $is_register_open = isset($_POST["is_register_open"]) ? $_POST["is_register_open"] : 0;
 
-$sql = "UPDATE batches SET name = '$name', course_id = $course_id, start_date = '$start_date', start_time = '$start_time', end_time = '$end_time', student_limit = $student_limit, is_register_open = $is_register_open WHERE id = $row_id";
+$sql = "UPDATE batches SET name = '$name', course_id = $course_id, start_date = '$start_date', start_time = '$start_time', end_time = '$end_time', student_limit = $student_limit, is_register_open = $is_register_open WHERE id = $id";
 // echo $sql;  // *** always check SQL UPDATE statement before executing query
 // die();
 

@@ -1,5 +1,6 @@
-cp product-create-list.php gender-create-list.php
-cp product-delete.php gender-delete.php
-cp product-edit.php gender-edit.php
-cp product-store.php gender-store.php
-cp product-update.php gender-update.php
+cp batch-list.php student-list.php
+cp batch-delete.php student-delete.php
+cp batch-edit.php student-edit.php
+cp batch-store.php student-store.php
+cp batch-update.php student-update.php
+cp batch-create.php student-create.php

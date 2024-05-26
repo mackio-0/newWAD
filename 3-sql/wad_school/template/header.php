@@ -13,8 +13,8 @@ require_once "./db_connect.php"
 </head>
 
 <body>
-    <main class=" max-w-[1000px] mx-auto p-10">
-        <header class=" flex gap-5 items-center mb-6">
+    <main class=" max-w-[1000px] mx-auto p-5">
+        <header class=" flex gap-5 items-center mb-5">
             <!-- Navigation Toggle -->
             <button type="button" class="text-gray-500 hover:text-gray-600" data-hs-overlay="#docs-sidebar" aria-controls="docs-sidebar" aria-label="Toggle navigation">
                 <!-- <span class="sr-only">Toggle Navigation</span> -->
