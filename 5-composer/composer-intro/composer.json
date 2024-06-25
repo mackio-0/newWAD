@@ -1,0 +1,20 @@
+{
+    "name": "mms/hello",
+    "description": "san kyi tr",
+    "type": "library",
+    "require": {
+        "symfony/dotenv": "^6.4"
+    },
+    "license": "free",
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "mkk"
+        }
+    ],
+    "minimum-stability": "beta"
+}

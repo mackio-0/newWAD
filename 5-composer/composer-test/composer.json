@@ -1,0 +1,19 @@
+{
+    "name": "mms/mkk",
+    "description": "lorem",
+    "type": "library",
+    "autoload": {
+        "psr-4": {
+            "Mms\\Mkk\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "mkk"
+        }
+    ],
+    "require": {
+        "monolog/monolog": "^3.6",
+        "guzzlehttp/guzzle": "^7.8"
+    }
+}

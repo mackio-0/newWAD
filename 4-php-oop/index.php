@@ -49,13 +49,36 @@ echo "<pre>";
 
 ///////////////////////////////////////////////////////////
 // Single Inheritence example
-$request = new Request;
-echo $request->get();
-echo $request->post();
-echo $request->file();
-echo $request->length();
+// $request = new Request;
+// echo $request->get();
+// echo $request->post();
+// echo $request->file();
+// echo $request->length();
 ///////////////////////////////////////////////////////////
 
+///////////////////////////////////////////////////////////
+// Polymorphysim
+
+// function animalSound(object $dog) {
+//     return $dog->makeSound();
+// }
+
+// echo animalSound("hehe"); 
+// $cat = new Cat;
+// echo animalSound($cat);
+//  it can only be use for one type of animal correctly, if you enter cat it still works but dont make sense
+
+// function animalSound(Animal $animal) {
+//     // return $animal->cute();
+//     // return $animal->bite();
+//     return $animal->makeSound();
+// }
+
+// $cat = new Cat;
+// $dog = new Dog;
+// echo animalSound($cat);
+// echo animalSound($dog);
+///////////////////////////////////////////////////////////
 
 
 // require_once "./classes/Person.php";
