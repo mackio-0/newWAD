@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ItemController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\TestController;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Route;
@@ -35,13 +36,13 @@ Route::get('/', function () {
 
 // Route::get('/area/{w}/{h}', fn ($w, $h) => ($w * $h) . ' sqft');
 
-Route::get('/products', function () {
-    // $products = file_get_contents('https://fakestoreapi.com/products');
-    // return $products;
+// Route::get('/products', function () {
+//     // $products = file_get_contents('https://fakestoreapi.com/products');
+//     // return $products;
 
-    $products = Http::get('https://fakestoreapi.com/products');
-    dd($products);
-});
+//     $products = Http::get('https://fakestoreapi.com/products');
+//     dd($products);
+// });
 
 // Route::get('/home', function () {
 //     return view('blog.home');
@@ -52,4 +53,15 @@ Route::get('/about', [ItemController::class, 'about']);
 Route::get('/contact', [ItemController::class, 'contact']);
 Route::get('/area/{w}/{h}', [ItemController::class, 'calculate']);
 Route::get('/profile/{age?}', [ItemController::class, 'profile']);
+
 Route::get('/test', [TestController::class, 'test']);
+
+// Route::get('/product', [ProductController::class, 'index']);
+// Route::get('/product/create', [ProductController::class, 'create']);
+// Route::post('/product', [ProductController::class, 'store']);
+// Route::get('/product/show/{id}', [ProductController::class, 'show']);
+// Route::get('/product/edit/{id}', [ProductController::class, 'edit']);
+// Route::get('/product/update', [ProductController::class, 'update']);
+// Route::get('/product/delete', [ProductController::class, 'destroy']);
+
+Route::resource('product', ProductController::class);
