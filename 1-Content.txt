@@ -1,0 +1,108 @@
+
+
+
+
+
+
+
+
+Day 9 - gallery mini-projekt, file handling, move_uploaded_file(), file extension getting, multiple files uploading, multi files showing.
+Day 10 - gallery photo delete, move button inside the photo and hover visibility, GET, unlink(), table, class add or remove by php, delete multiple files via GET, file_put_contents(), file_get_contents, api for mini projects, markdown
+Day 11 - date in PHP, mysql, wordpress, phpmyadmin installation and running them
+Day 12 - website vs web app, WP full usage
+Day 13 - What is database and DBMS?
+Day 14 - mysql
+Day 15 - mysql and php product CRUD
+Day 16 - mysql and php product CRUD UI
+Day 17 - mysql and php product CRUD UI
+Day 18 - 
+Day 19 - Three relationship types and JOIN statements
+Day 20 - wad_school UI php code project, strtotime(), courses, batch, gender, nationality table CRUD, input hidden for edit so that update page has the id for query
+Day 21 - student table CRUD, paginaton, URL building, JOIN tables
+Day 22 - enrollment table and foreign key primary key, RESTRICT and CASCADE
+Day 23 - update on wad_school sql statements
+Day 24 - Transctin Commit Rollback, User and Host Management, Permission Management, Key Factors effecting the sql database
+Day 25 - PHP path-based routing and procedural example, requsest => routing => controller => 1.processing 2.view 3.vice versa
+Day 26 - Security issue base dir routing, fix with public index file, procedural project
+Day 27 - PHP OOP intro, magic methods, classes, objects, php mysqli oop usage, constructor, destructor 
+Day 28 - PHP OOP, Method Chaining, public, private, protected, 4 pillers of OOP, Encapsulation
+Day 29 - Auto Loading, Inheritence, public private protected in relation to child class, Model example and usage with previous database classes
+Day 30 - Single Inheritence, Trait, Abstract, Interface
+Day 31 - Method Overwrite, Polymorphsim, Static, composer install and usage, namespace declaration - autoloading - using name space according to psr, .env, using namespace from src folder, composer dump-autoload,
+
+Laravel
+Day 0 - Pre 9 videos
+Day 1 - Installation and opening the project
+Day 2 - MVC, Routes - Routes/web.php
+Day 3 - 
+views-files, 
+route parameters - optional or non-optional,
+Http::get() - similar vanilla file_get_contents(),
+url(), 
+@extends()
+
+Day 4 - 
+@yield() - @section()...@endsection,
+@stack() - @push()...@endpush for style,script etc
+
+Day 5 - 
+Controller, call them from web.php by array [ControllerName::class, 'methodName'] in the place of closure function, 
+accept params from web.php from controller, $request, 
+
+Day 6 - Model, $fillale, $hidden, migration
+
+Day 7 - 
+Send data to view from controller, Three ways -- compact() and ->with() and array,
+view('test', compact('varName', 'varName',...)),
+view()->with('name', $name)->with('age', $age)->with('carrer', $carrer),
+array,
+html tag display {!! html !!},
+@foreach...@endforeach
+
+Day 8 -
+@if...@elseif...@endif,
+@php...@endphp,
+@while...@endwhile,
+@switch...@case @break...@case @break...@default...@endswitch
+
+Day 9 - 
+make:controller ControllerName --resource __ create controller with 7 empty boilerplate CRUD methods,
+Route::resource('product', ProductController::class); __ to create 7 routes auto with only one line,
+check with php artisan route:list,
+to open database connection, .env file >> uncomment db info lines
+php artisan migrate __ to init the database connection
+
+Day 10 -
+php artisan make:migration create_tests_table -- the name must be in plural form,
+$table->string('name');... datatypes,
+$table->text('description')->comment();
+$table->boolean('is_active')->default(false);
+$table->bigInteger('views')->nullable();
+php artisan migrate:rollback,
+php artisan migrate:reset,  ---- php artisan migrate:refresh (two in one)
+php artiasn migrate,        ----
+php artisan migrate:fresh,
+
+Day 11 -
+php artisan make:factory NameFactory
+php artisan db:seed
+php artisan make:seeder TestSeeder
+php artisan db:seed --class=TestSeeder
+
+Day 12 -
+For new CRUD project, create a new project, link flowbite (see flowbite doc)
+create a resource controller, create resource route
+create model
+create migration and create factory
+create seeder, and migrate
+
+Day 13 -
+@csrf
+$request -- http post requests
+back() -- to go back to last page
+create a model object in the resource controller to store data into that object, then from that object to the database
+$item = new Item();
+$item->name = $request->name; ...
+$item->save();
+To get all the data, use the already existing object and all() method
+$items = Item::all();
