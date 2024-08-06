@@ -52,7 +52,7 @@ accept params from web.php from controller, $request,
 Day 6 - Model, $fillale, $hidden, migration
 
 Day 7 - 
-Send data to view from controller, Three ways -- compact() and ->with() and array,
+SEND DATA to view from controller, Three ways -- compact() and ->with() and array,
 view('test', compact('varName', 'varName',...)),
 view()->with('name', $name)->with('age', $age)->with('carrer', $carrer),
 array,
@@ -97,7 +97,7 @@ create migration and create factory
 create seeder, and migrate
 
 Day 13 -
-@csrf
+@csrf in POST form to satisfy the csrf error
 $request -- http post requests
 back() -- to go back to last page
 create a model object in the resource controller to store data into that object, then from that object to the database
@@ -106,3 +106,26 @@ $item->name = $request->name; ...
 $item->save();
 To get all the data, use the already existing object and all() method
 $items = Item::all();
+route();
+
+Day 14 -
+showing data from database in a table
+to DELETE data in Laravel, use form.
+route('...', $item->id)
+@method('delete') in form
+To FIND the required item from database, use model FIND method.
+$item = Item::find($id);
+
+Day 15 -
+EDIT Data using item.edit route
+
+Day 16 -
+
+Day 17 -
+php artisan make:model ModelName --all
+Laravel will generate 8 files relating to the model -- 
+DIFFERENCE between controller functions in make:controller --resource and make:model --all
+"make:con --resource" file's functions will be to receive normal string id and normal request object.
+"make:model --all"    file's functions will be to receive MODEL OBJECT
+
+Day 18 -
