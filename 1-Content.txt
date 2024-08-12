@@ -87,7 +87,7 @@ Day 11 -
 php artisan make:factory NameFactory
 php artisan db:seed
 php artisan make:seeder TestSeeder
-php artisan db:seed --class=TestSeeder
+php artisan db:seed --class TestSeeder
 
 Day 12 -
 For new CRUD project, create a new project, link flowbite (see flowbite doc)
@@ -127,5 +127,51 @@ Laravel will generate 8 files relating to the model --
 DIFFERENCE between controller functions in make:controller --resource and make:model --all
 "make:con --resource" file's functions will be to receive normal string id and normal request object.
 "make:model --all"    file's functions will be to receive MODEL OBJECT
+It is called "Route Model Binding"
 
 Day 18 -
+foreign id linking to items table from categories table
+-$table->unsignedBigInteger('category_id'); 
+-$table->foreign('category_id')->refrences('id')->on('categories')->onDelete('CASCADE');
+        foreign id name,     from which column,of from which table,  action on delete
+MIGRATION will run first-come-first-serve, FCFS on time-basic. So if you use the second syntax on first migrating database, it will throw an error telling it can't find the second table in database( because it has't built that table yet ).
+Add category and status in item crud UI
+
+Day 19 -
+One to One relationship
+One to Many relationship
+link relations in Model
+
+Day 20 -
+One to One relationship example with phone and person crud
+
+Day 21 -
+Validation in controller store function $request->validate([
+    'name' => 'required|string',
+    'description' => 'required|string',
+]);
+error message in view with @error('inputName')...@enderror and $message
+If the user click the save button without entering data in the form, it will show error message in the form and the user can't save data without entering data. 
+If the user only fill 1 input and click the save button, the error message will show up and both input field will be blank.
+We need to retain the data in the input field via using value="{{ old('inputName') }}"
+Validation in controller is not great practice, varbose controller, so use it in StoreCategoryRequest
+public function rules(): array
+{
+return [
+        'name' => 'required|string',
+        'description' => 'required|string',
+];
+}
+
+Custom validation message via StoreCategoryRequest new function.
+public function messages(): array
+{
+return [
+        'name.required' => 'Name is required',
+        'description.required' => 'Description is required',
+];
+}
+If it already has old data in the input, we need to show both old data and old value before error refresh,
+value="{{ $category->name }}" ==> value="{{ old('name', $category->name) }}"
+
+Day 22 -

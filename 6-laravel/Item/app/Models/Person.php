@@ -5,12 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Item extends Model
+class Person extends Model
 {
     use HasFactory;
 
-    public function category()
+    public function phone()
     {
-        return $this->belongsTo(Category::class);
+        return $this->hasOne(Phone::class);
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Item;
 use Illuminate\Http\Request;
 
@@ -20,18 +21,30 @@ class ItemController extends Controller
 
     public function create()
     {
-        return view('item.create');
+        $categories = Category::all();
+        return view('item.create', compact('categories'));
     }
 
     public function store(Request $request)
     {
         // return $request;
 
+        $request->validate([
+            'name' => 'required|string',
+            'price' => 'required|string',
+            'stock' => 'required|string',
+            'description' => 'required|string',
+            'category_id' => 'required|integer',
+            'status' => 'required|in:available,unavailable',
+        ]);
+
         $item = new Item();
         $item->name = $request->name;
         $item->price = $request->price;
         $item->stock = $request->stock;
         $item->description = $request->description;
+        $item->category_id = $request->category_id;
+        $item->status = $request->status;
         $item->save();
 
         return redirect()->route('item.index');
@@ -42,7 +55,8 @@ class ItemController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $item = Item::find($id);
+        return view('item.detail', compact('item'));
     }
 
     /**
@@ -51,7 +65,8 @@ class ItemController extends Controller
     public function edit(string $id)
     {
         $item = Item::find($id);
-        return view('item.edit', compact('item'));
+        $categories = Category::all();
+        return view('item.edit', compact('item', 'categories'));
     }
 
     /**
@@ -62,10 +77,22 @@ class ItemController extends Controller
         // return $id;
         $item = Item::find($id);
         // dd($item);
+
+        $request->validate([
+            'name' => 'required|string',
+            'price' => 'required|string',
+            'stock' => 'required|string',
+            'description' => 'required|string',
+            'category_id' => 'required|integer',
+            'status' => 'required|string',
+        ]);
+
         $item->name = $request->name;
         $item->price = $request->price;
         $item->stock = $request->stock;
         $item->description = $request->description;
+        $item->category_id = $request->category_id;
+        $item->status = $request->status;
         $item->update();
 
         return redirect()->route('item.index');
