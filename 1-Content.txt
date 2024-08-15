@@ -175,3 +175,17 @@ If it already has old data in the input, we need to show both old data and old v
 value="{{ $category->name }}" ==> value="{{ old('name', $category->name) }}"
 
 Day 22 -
+Pagination -- to add pagination we need to run following command
+php artisan vendor:publish --tag=Laravel-pagination
+Call paginate method in the controller function that you want to use
+fn index() { $items = Item::paginate(5); ....}
+in view index file, {{ $items->links('pagination::simple-tailwind') }}
+Validation Min Max characters, SAME NAME in Request Files,
+public function rules(): array
+{
+return [
+        'name' => 'required|string|min:5|max:10|unique:table,column,except,id',
+                                                unique:categories,name....... ,
+        'description' => 'required|string|min:5|max:100',
+];
+}

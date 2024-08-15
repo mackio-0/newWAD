@@ -46,7 +46,7 @@
                     @foreach ($items as $item)
                         <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                             <td class="px-6 py-4">
-                                {{ $loop->iteration }}
+                                {{ $item->id }}
                             </td>
                             <th scope="row"
                                 class="px-6 py-4 text-wrap font-medium text-gray-900 whitespace-nowrap dark:text-white">
@@ -91,6 +91,9 @@
                     @endforeach
                 </tbody>
             </table>
+            <div class="p-6">
+                {{ $items->links('pagination::tailwind') }}
+            </div>
         </div>
     </div>
 
