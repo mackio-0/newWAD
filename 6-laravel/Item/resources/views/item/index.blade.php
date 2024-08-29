@@ -11,8 +11,23 @@
 
 <body>
 
+    {{-- {{ dd($items) }} --}}
+
     <div class="container max-w-5xl mx-auto p-5">
         <div class="relative overflow-x-auto">
+            <form action="{{ route('item.search') }}" method="GET">
+                <div class="mx-4 my-3">
+                    <input type="text" id="query" name="query"
+                        class=" bg-gray-50 border border-gray-800 rounded-md" value="{{ isset($query) ? $query : '' }}">
+                    <button type="submit"
+                        class="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 font-medium rounded-lg px-5 py-2.5 text-center me-2 mb-2">
+                        Search
+                    </button>
+                    <a href="{{ route('item.index') }}"
+                        class="text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg px-5 py-3 text-center me-2 mb-2">Item
+                        List</a>
+                </div>
+            </form>
             <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
                 <thead class="text-xs text-gray-800 uppercase bg-gray-400 dark:bg-gray-700 dark:text-gray-400">
                     <tr>
@@ -21,6 +36,9 @@
                         </th>
                         <th scope="col" class="px-6 py-3">
                             Name
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            Image
                         </th>
                         <th scope="col" class="px-6 py-3">
                             Price
@@ -52,6 +70,12 @@
                                 class="px-6 py-4 text-wrap font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                 {{ $item->name }}
                             </th>
+                            <td class="px-6 py-4">
+                                @foreach ($item->item_images as $image)
+                                    <img src="{{ asset('storage/itemImages/' . $image) }}"
+                                        alt="{{ $item->name }}'s picture" width="100px" height="100px">
+                                @endforeach
+                            </td>
                             <td class="px-6 py-4">
                                 {{ $item->price }}
                             </td>
@@ -92,8 +116,14 @@
                 </tbody>
             </table>
             <div class="p-6">
-                {{ $items->links('pagination::tailwind') }}
+                {{-- {{ $items->links('pagination::tailwind') }} --}}
             </div>
+        </div>
+        <div class="flex w-full items-center justify-center">
+            <a href="{{ route('item.create') }}"
+                class="focus:outline-none w-40 text-center text-white bg-black hover:bg-gray-700 focus:ring-4 focus:ring-gray-500 font-medium rounded-lg text-sm px-4 py-2.5 mb-2 dark:focus:ring-yellow-900">
+                Create
+            </a>
         </div>
     </div>
 

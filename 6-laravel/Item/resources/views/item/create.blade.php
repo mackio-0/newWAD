@@ -13,7 +13,7 @@
 
     <div class="container mx-auto my-10">
         <div class="max-w-md w-full mx-auto bg-white shadow-lg rounded-lg p-8">
-            <form action="{{ route('item.store') }}" method="post">
+            <form action="{{ route('item.store') }}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="grid gap-4 mb-3">
                     <label for="name" class=" block text-sm">Name</label>
@@ -21,6 +21,14 @@
                         class=" bg-gray-50 border border-gray-800 rounded-md @error('name') border-red-600 @enderror"
                         value="{{ old('name') }}">
                     @error('name')
+                        <p class="text-red-600">{{ $message }}</p>
+                    @enderror
+
+                    <label for="image" class=" block text-sm">Image</label>
+                    <input type="file" id="image" name="images[]"
+                        class=" bg-gray-50 border border-gray-800 rounded-md @error('image') border-red-600 @enderror"
+                        value="" multiple>
+                    @error('image')
                         <p class="text-red-600">{{ $message }}</p>
                     @enderror
 
@@ -66,7 +74,7 @@
                         @enderror
                     </div>
 
-                    <div class="">
+                    <div class="mb-3">
                         <p class=" mb-3 text-sm border-gray-500 border-b-2 inline-block">Available Status</p>
                         <div class="flex items-center mb-4">
                             <input checked id="available" type="radio" value="available" name="status"
@@ -91,7 +99,7 @@
                     </div>
 
                     <button type="submit"
-                        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Create</button>
+                        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 mt-3 focus:ring-blue-300 rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Create</button>
                 </div>
             </form>
         </div>

@@ -46,7 +46,8 @@ Day 4 -
 @stack() - @push()...@endpush for style,script etc
 
 Day 5 - 
-Controller, call them from web.php by array [ControllerName::class, 'methodName'] in the place of closure function, 
+Controller and functions inside, 
+call them from web.php by array [ControllerName::class, 'methodName'] in the place of closure function, 
 accept params from web.php from controller, $request, 
 
 Day 6 - Model, $fillale, $hidden, migration
@@ -189,3 +190,28 @@ return [
         'description' => 'required|string|min:5|max:100',
 ];
 }
+
+Day 23 -
+Three types of Routes
+-Route::get(fn(return view()));
+-Route::get('search', [ProductController::class, 'search'])->name('product.search');
+-Route::resource('product', ProductController::class);
+$request can accept and show both post and get method form data.
+In form POST method we can access what's in the $request by $request->name.
+In form GET method we have to specify where did that form data come from like $request->input('query').
+search => $items = Item::where('name', 'LIKE', "%{$query}%")->get(); where()->paginate(5);
+
+Day 24 -
+
+
+Day 25 -
+multi-file upload => change column type to json, change input name to name[] and add multiple attribute to input
+
+
+Day 26 -
+
+
+Day 27 -
+
+
+Day 28 -

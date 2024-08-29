@@ -13,7 +13,7 @@
     {{-- {{ dd($item) }} --}}
     <div class="container mx-auto my-10">
         <div class="max-w-md w-full mx-auto bg-white shadow-lg rounded-lg p-8">
-            <form action="{{ route('item.update', $item->id) }}" method="post">
+            <form action="{{ route('item.update', $item->id) }}" method="post" enctype="multipart/form-data">
                 @csrf
                 @method('patch')
                 <div class="grid gap-4 mb-3">
@@ -24,6 +24,16 @@
                     @error('name')
                         <p class="text-red-600">{{ $message }}</p>
                     @enderror
+
+                    <label for="image" class=" block text-sm">Image</label>
+                    <div class="flex items-center justify-center gap-5 w-full">
+                        @foreach ($item->item_images as $image)
+                            <img src="{{ asset('storage/itemImages/' . $image) }}" alt="{{ $item->name }}'s picture"
+                                width="100px" height="100px">
+                        @endforeach
+                    </div>
+                    <input type="file" id="image" name="images[]"
+                        class=" bg-gray-50 border border-gray-800 rounded-md" value="" multiple>
 
                     <label for="price" class=" block text-sm">Price</label>
                     <input type="text" id="price" name="price"

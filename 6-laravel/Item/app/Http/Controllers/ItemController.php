@@ -8,12 +8,31 @@ use Illuminate\Http\Request;
 
 class ItemController extends Controller
 {
+
+    public function search(Request $request)
+    {
+        // return $request;
+        $query = $request->input('query');
+        // return $query;
+        $items = Item::where('name', 'LIKE', "%{$query}%")
+            ->orWhere('status', 'LIKE', "{$query}%")
+            ->paginate(5);
+        // return $items;
+
+        return view('item.index', compact('items', 'query'));
+    }
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $items = Item::paginate(5);
+        $items = Item::all();
+
+        foreach ($items as $item) {
+            $item->item_images = json_decode($item->item_images, true);
+            // dd($item->item_images); // if you want to see array you need to decode, if not you will olny get a json sting pretending to be an array
+
+        }
 
         return view('item.index', compact('items'));
         // return $items;
@@ -31,6 +50,7 @@ class ItemController extends Controller
 
         $request->validate([
             'name' => 'required|string',
+            // 'image' => 'required',
             'price' => 'required|string',
             'stock' => 'required|string',
             'description' => 'required|string',
@@ -38,8 +58,28 @@ class ItemController extends Controller
             'status' => 'required|in:available,unavailable',
         ]);
 
+        // if ($request->image) {
+        //     $file = $request->image;
+        //     $ext = $file->extension();
+        //     // return $ext;
+        //     $new_name = "item_image-" . uniqid() . '.' . $ext;
+        //     // return $new_name;
+
+        //     $file->storeAs('public/itemImages', $new_name);
+        // }
+        $images = [];
+        if ($request->images) {
+            foreach ($request->file('images') as $file) {
+                $new_name = "item_image-" . uniqid() . '.' . $file->extension();
+                $file->storeAs('public/itemImages', $new_name);
+                $images[] = $new_name;
+            }
+        }
+
+
         $item = new Item();
         $item->name = $request->name;
+        $item->item_images = json_encode($images);
         $item->price = $request->price;
         $item->stock = $request->stock;
         $item->description = $request->description;
@@ -66,6 +106,7 @@ class ItemController extends Controller
     {
         $item = Item::find($id);
         $categories = Category::all();
+        $item->item_images = json_decode($item->item_images, true);
         return view('item.edit', compact('item', 'categories'));
     }
 
@@ -93,6 +134,15 @@ class ItemController extends Controller
         $item->description = $request->description;
         $item->category_id = $request->category_id;
         $item->status = $request->status;
+        $images = [];
+        if ($request->images) {
+            foreach ($request->file('images') as $file) {
+                $new_name = "item_image-" . uniqid() . '.' . $file->extension();
+                $file->storeAs('public/itemImages', $new_name);
+                $images[] = $new_name;
+            }
+            $item->item_images = json_encode($images);
+        }
         $item->update();
 
         return redirect()->route('item.index');
