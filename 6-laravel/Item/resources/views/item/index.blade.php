@@ -15,6 +15,7 @@
 
     <div class="container max-w-5xl mx-auto p-5">
         <div class="relative overflow-x-auto">
+            {{-- {{ $appName }} --}}
             <form action="{{ route('item.search') }}" method="GET">
                 <div class="mx-4 my-3">
                     <input type="text" id="query" name="query"

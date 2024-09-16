@@ -13,6 +13,7 @@
 
     <div class="container mx-auto my-10">
         <div class="max-w-md w-full mx-auto bg-white shadow-lg rounded-lg p-8">
+            {{ $fruit }}
             <form action="{{ route('category.store') }}" method="post">
                 @csrf
                 <div class="grid gap-4 mb-3">

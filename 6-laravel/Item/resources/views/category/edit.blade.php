@@ -14,6 +14,7 @@
 
     <div class="container mx-auto my-10">
         <div class="max-w-md w-full mx-auto bg-white shadow-lg rounded-lg p-8">
+            {{ $fruit }}
             <form action="{{ route('category.update', $category->id) }}" method="post">
                 @csrf
                 @method('put')

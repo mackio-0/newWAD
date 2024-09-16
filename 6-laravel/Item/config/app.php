@@ -13,6 +13,8 @@ return [
     |
     */
 
+    'appName' => 'Chit Tl',
+
     'name' => env('APP_NAME', 'Laravel'),
 
     /*
@@ -65,7 +67,9 @@ return [
     |
     */
 
-    'timezone' => env('APP_TIMEZONE', 'UTC'),
+    // 'timezone' => env('APP_TIMEZONE', 'UTC'),
+    // 'timezone' => config('app.timezone', 'Asia/Yangon'),
+    'timezone' => 'Asia/Bangkok',
 
     /*
     |--------------------------------------------------------------------------

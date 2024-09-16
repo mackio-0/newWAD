@@ -215,3 +215,38 @@ Day 27 -
 
 
 Day 28 -
+
+
+Day 29 -
+
+
+Day 30 -
+
+
+Day 31 -
+
+
+Day 32 -
+
+
+Day 33 -
+
+
+Day 34 -
+
+
+Day 35 - 
+
+
+Day 36 -
+Racap
+installation of breeze auth (check in laravel documentation)
+added folders and files in breeze auth
+View::share() - View(Illuminate\Support\Facades\View) **important not wrong model**
+diff between View::share() and compact() is that compact is used in sharing the data with the specific view and View::share is used in sharing the data with all the views.
+when do constructor and destructor works - when the object is created from the class that has constructor defined (like using new keyword, dependency injection and factory method) and when that object is destroyed using unset() function, script ends or the obj is replaced by new object (note that in php, destructor is not called immeditely wehn an object is destroyed, instead, object is marked for garbage collection, and destructor is called when the garbage collector runs)
+Config folder - config(['key'=>'value']) function, config('configFileName.key') function to retrieve the value from config file in anywhere in the project
+compact() - to send data to specific view
+View::share() - to send data to all views in the class
+config() - to retrieve constand data to all views in the class
+.env -> APP_DEBUG=true, where to find laravel error log, in storage/logs/laravel.log

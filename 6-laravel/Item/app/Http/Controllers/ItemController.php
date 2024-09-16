@@ -26,6 +26,8 @@ class ItemController extends Controller
      */
     public function index()
     {
+        // $appName = config('app.appName');
+        // dd($appName);
         $items = Item::all();
 
         foreach ($items as $item) {
